@@ -1,0 +1,7 @@
+{
+  "threshold_method": "dev_sharpness_quantile",
+  "quantile": 0.2,
+  "laplacian_variance_threshold": 186.9665985107422,
+  "n_dev": 56,
+  "seed": 42
+}

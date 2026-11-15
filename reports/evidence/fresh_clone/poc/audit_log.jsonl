@@ -1,0 +1,23 @@
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_18_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_13_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_15_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_04_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_09_2", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_15_2", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_17_2", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_21_2", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_07_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_11_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:edit", "item_id": "img_19_3", "before": null, "after": "KEEP", "reason": "Vẫn nhận ra vật thể và màu sác của vật thể", "extra": {}}
+{"ts": "2026-11-15T01:36:45+00:00", "actor": "Tiến", "action": "review:edit", "item_id": "img_16_2", "before": null, "after": "KEEP", "reason": "Vẫn nhận ra vật thể và màu sắc đề nghị thêm guildeline để thống nhất chọn ảnh", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_23_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_17_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "review:edit", "item_id": "img_14_2", "before": null, "after": "KEEP", "reason": "Vẫn nhận ra vật thể và màu sắc. Nhưng không nhìn thấy rõ biển số đề nghị thêm guildeline để thống nhất", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_00_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_01_2", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_06_2", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_22_2", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "review:approve", "item_id": "img_12_3", "before": null, "after": "approve", "reason": "", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "override:edit", "item_id": "img_19_3", "before": "RECAPTURE", "after": "KEEP", "reason": "Vẫn nhận ra vật thể và màu sác của vật thể", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "override:edit", "item_id": "img_16_2", "before": "RECAPTURE", "after": "KEEP", "reason": "Vẫn nhận ra vật thể và màu sắc đề nghị thêm guildeline để thống nhất chọn ảnh", "extra": {}}
+{"ts": "2026-11-15T01:36:46+00:00", "actor": "Tiến", "action": "override:edit", "item_id": "img_14_2", "before": "RECAPTURE", "after": "KEEP", "reason": "Vẫn nhận ra vật thể và màu sắc. Nhưng không nhìn thấy rõ biển số đề nghị thêm guildeline để thống nhất", "extra": {}}

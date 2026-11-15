@@ -1,0 +1,20 @@
+{
+  "status": "REWORK",
+  "reason_code": "RECAPTURE_REQUIRED",
+  "reason": "Review completed; 17 top-B images require recapture.",
+  "owner": "Nguyễn Anh Tiến",
+  "scope": "t02",
+  "evidence": [
+    "out\\poc\\ranked_review.csv",
+    "out\\poc\\review_queue.csv",
+    "out\\poc\\audit_log.jsonl"
+  ],
+  "metrics": {
+    "n_items": 96,
+    "reviewed": 20,
+    "review_budget": 20,
+    "recapture_in_topB": 17
+  },
+  "ts": "2026-11-15T01:36:46+00:00",
+  "canonical": "REWORK"
+}

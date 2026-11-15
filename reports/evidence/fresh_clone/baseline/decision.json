@@ -1,0 +1,14 @@
+{
+  "status": "HOLD",
+  "reason_code": "BASELINE_ONLY",
+  "reason": "Laplacian baseline output; not a release decision.",
+  "owner": "Nguyễn Anh Tiến",
+  "scope": "t02",
+  "evidence": [
+    "out\\baseline\\ranked_review.csv",
+    "out\\baseline\\baseline_config.json"
+  ],
+  "metrics": {},
+  "ts": "2026-11-15T01:36:38+00:00",
+  "canonical": "HOLD"
+}

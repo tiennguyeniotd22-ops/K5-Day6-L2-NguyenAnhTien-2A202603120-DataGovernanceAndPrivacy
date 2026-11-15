@@ -55,9 +55,24 @@ Lệnh baseline:
 | Baseline Laplacian | exit 0; 96 ảnh; ngưỡng dev `186.9666`; runtime `3.625 s` trong một lần chạy | queue 20; `HOLD / BASELINE_ONLY` |
 | PoC đa đặc trưng | exit 0; 96 ảnh; 24 ảnh bị đánh dấu nghi ngờ; runtime `2.7424 s` trong một lần chạy | review đủ 20/20; 17 approve, 3 edit thành `KEEP`; còn 17 ảnh `RECAPTURE`, nên `REWORK / RECAPTURE_REQUIRED` |
 
+### So sánh vận hành trên clone sạch
+
+Đây là so sánh đầu ra và thời gian chạy của đúng một lần chạy trên cùng máy, không phải metric chất lượng phát hiện lỗi:
+
+| Chỉ số vận hành | Baseline Laplacian | PoC đa đặc trưng |
+|---|---:|---:|
+| Ảnh đầu vào / ngân sách review | 96 / 20 | 96 / 20 |
+| Số ảnh trong top-20 | 20 | 20 |
+| Thời gian chạy clone sạch | 0.9754 s | 2.0317 s |
+| Quyết định batch | `HOLD / BASELINE_ONLY` | `REWORK / RECAPTURE_REQUIRED` |
+
+Hai queue top-20 có 16 ảnh trùng nhau (80%); mỗi pipeline có 4 ảnh riêng. Thời gian chỉ là một lần đo nên không dùng để kết luận pipeline nào nhanh hơn nói chung. Chưa có overlay GT nên chưa thể kết luận pipeline nào phát hiện lỗi tốt hơn; Recall@B/Precision@B vẫn chờ nhãn chuẩn.
+
 Đây là thời gian của một lần chạy trên Windows, Python 3.11.5 và CPU; không phải benchmark trung bình. Review queue PoC có 10 ảnh dev và 10 ảnh eval. Người review đã xem những ảnh eval này, nhưng không sửa score, không dùng nhãn GT và không thay ngưỡng dựa trên eval; cần khai báo việc đã xem ảnh khi nộp để giữ minh bạch.
 
-Ba quyết định `edit` là các trường hợp reviewer cho rằng ảnh còn dùng được cho mục tiêu nhận diện thô. Chúng là ví dụ pipeline có thể đề nghị chụp lại quá mức; ghi chú reviewer là bằng chứng định tính, không phải nhãn ground truth. Bản export review có trong [`t02_review_evidence.csv`](t02_review_evidence.csv); bản audit JSONL được sinh local tại `out/poc/audit_log.jsonl`.
+Đã clone lại commit `fa71e62` vào thư mục tạm, tạo virtual environment mới, cài `requirements.txt`, chạy preflight/tests và chạy lại cả hai pipeline. Preflight: 0 lỗi; pytest: exit 0, chỉ skip các test cần GT. Hai file ranking khớp byte với lần chạy trước; hash và run metadata ở [`evidence/fresh_clone/reproduction.md`](evidence/fresh_clone/reproduction.md).
+
+Ba quyết định `edit` là các trường hợp reviewer cho rằng ảnh còn dùng được cho mục tiêu nhận diện thô. Chúng là ví dụ pipeline có thể đề nghị chụp lại quá mức; ghi chú reviewer là bằng chứng định tính, không phải nhãn ground truth. Bản export review có trong [`t02_review_evidence.csv`](t02_review_evidence.csv); audit JSONL, decision, run-info và prediction CSV của clone sạch được lưu trong [`evidence/fresh_clone/`](evidence/fresh_clone/). Contact sheet offline tự chứa: [`evidence/t02_contact_sheet.html`](evidence/t02_contact_sheet.html).
 
 ## 05 · Metric và giới hạn kết luận
 
@@ -83,5 +98,8 @@ Dữ liệu hiện tại là fixture tổng hợp. Không kết luận tuân th�
 
 - `.\.venv\Scripts\python.exe -m tools.preflight`: 0 lỗi; 2 cảnh báo chỉ về gói ảnh thật/model tùy chọn không cần cho T02.
 - `.\.venv\Scripts\python.exe -m pytest -q`: exit 0, 0 failed; các test yêu cầu overlay GT được skip vì overlay chưa có.
+- Clone sạch với Python 3.11.5 và virtual environment mới cũng preflight 0 lỗi, pytest exit 0; ranking baseline/PoC khớp byte với lần chạy trước. Log đầy đủ ở [`evidence/fresh_clone/reproduction.md`](evidence/fresh_clone/reproduction.md).
 - Còn chờ để hoàn tất đánh giá chính thức: overlay GT của giảng viên; sau đó chạy evaluate/compare và bổ sung metric + failure case đã đối chiếu nhãn.
+- Còn chờ review thủ công: người thực hiện cá nhân có thể tự làm blind audit 20 ảnh eval chưa nằm trong queue đầu tiên theo [`evidence/t02_independent_review_instructions.md`](evidence/t02_independent_review_instructions.md); phải ghi là audit một người, không gọi là reviewer độc lập.
+- Showcase có contact sheet và dàn ý 5 slide tại [`evidence/showcase_t02.md`](evidence/showcase_t02.md); cần người học trình bày trực tiếp hoặc chuyển dàn ý thành slide.
 - Mã cá nhân trong report là mã cục bộ. Nếu lớp yêu cầu mã nhóm chính thức hoặc tag mốc, thay/cấp từ giảng viên; không tự suy đoán.

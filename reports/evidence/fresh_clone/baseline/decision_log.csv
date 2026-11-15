@@ -1,0 +1,2 @@
+ts,scope,status,canonical,reason_code,reason,owner,evidence
+2026-11-15T01:36:38+00:00,t02,HOLD,HOLD,BASELINE_ONLY,Laplacian baseline output; not a release decision.,Nguyễn Anh Tiến,out\baseline\ranked_review.csv;out\baseline\baseline_config.json

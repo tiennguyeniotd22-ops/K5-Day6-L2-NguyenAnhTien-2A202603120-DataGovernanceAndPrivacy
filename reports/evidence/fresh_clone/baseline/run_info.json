@@ -1,0 +1,29 @@
+{
+  "track": "t02",
+  "run_name": "baseline",
+  "status": 0,
+  "seed": 42,
+  "offline": true,
+  "input": "fixtures\\t02_raw_qc",
+  "output": "out\\baseline",
+  "pipeline": "src.baselines.t02_laplacian",
+  "config_hash": "53ab3be5d544",
+  "git_sha": "fa71e62",
+  "runtime_seconds": 0.9754,
+  "stats": {
+    "n_items": 96,
+    "n_review_target": 20,
+    "n_dev": 56,
+    "laplacian_threshold": 186.9665985107422
+  },
+  "machine": {
+    "python": "3.11.5",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "processor": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel"
+  },
+  "output_check": {
+    "pred_file": "out\\baseline\\ranked_review.csv",
+    "exists": true,
+    "missing_columns": []
+  }
+}
