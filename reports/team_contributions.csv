@@ -1,2 +1,2 @@
-member,git_author_name,git_email,role,modules_files,commit_shas,evidence_note,presenter
-Nguyễn Anh Tiến,Nguyen Anh Tien,chogaugau231@gmail.com,Individual owner,configs/lab.yaml; src/pipeline.py; src/baselines/t02_laplacian.py; tests/test_cli.py; reports/,,Implemented T02 PoC and Laplacian baseline; reviewed 20 images; report reflects one-person contribution,yes
+"member","git_author_name","git_email","role","modules_files","commit_shas","evidence_note","presenter"
+"Nguyễn Anh Tiến","Nguyen Anh Tien","chogaugau231@gmail.com","Individual owner","configs/lab.yaml; src/pipeline.py; src/baselines/t02_laplacian.py; tests/test_cli.py; reports/","ca07265ffa6f0cbcb345976d5103faabac798dc8","Implemented T02 PoC and Laplacian baseline; reviewed 20 images; report reflects one-person contribution","yes"
