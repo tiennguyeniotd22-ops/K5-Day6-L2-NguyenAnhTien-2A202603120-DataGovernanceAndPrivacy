@@ -4,7 +4,7 @@ Starter repo cho bài lab **Data Pipeline, Privacy & Production PoC**: 14 challe
 Repo cung cấp **dữ liệu offline + hạ tầng dùng chung + metric chuẩn + template báo cáo** để nhóm tập trung vào phần quan trọng:
 vấn đề, baseline, thuật toán, đánh giá trung thực, human-in-the-loop và quyết định GO/HOLD/REWORK.
 
-> Repo **không** chứa lời giải. `src/pipeline.py` là file nhóm sở hữu; mọi thuật toán (kể cả baseline) do nhóm tự cài.
+> Repo là khung thực hành; `src/pipeline.py` hiện chứa PoC cá nhân cho T02. Baseline Laplacian của T02 nằm ở `src/baselines/t02_laplacian.py`.
 > Tài liệu học tập, không thay tư vấn pháp lý.
 
 ## 1. Quickstart (≤ 5 phút, chạy offline)
@@ -15,9 +15,12 @@ make setup                 # = python3 -m venv .venv && pip install -r requireme
 make preflight             # kiểm tra môi trường, fixtures, offline guard, không lộ token
 make test                  # pytest -q  (phải 0 failed)
 
-# Ví dụ wiring E2E (random baseline, có cho T01/T02/T11/T13):
-make baseline TRACK=t11      # ghi out/baseline/; repo học viên không có gt/ nên bước chấm
-                             # (make eval-baseline) chỉ chạy được khi đã cài overlay giảng viên, nếu không exit 2
+# T02 trên Windows PowerShell (dùng Python trong .venv; cả hai lệnh chạy offline):
+.\.venv\Scripts\python.exe -m src.main --track t02 --pipeline src.baselines.t02_laplacian --config configs/lab.yaml --output out/baseline --run-name baseline --offline --seed 42
+.\.venv\Scripts\python.exe -m src.main --track t02 --config configs/lab.yaml --output out/poc --run-name poc --offline --seed 42
+
+# Random wiring demo cho T01/T11/T13 (không phải baseline T02):
+make baseline TRACK=t11      # evaluate cần overlay GT riêng của giảng viên
 ```
 
 Chọn challenge: sửa `configs/lab.yaml` (`track`, `track_config`, `owner`, `group_id`), đọc `docs/tracks/TXX.md`.

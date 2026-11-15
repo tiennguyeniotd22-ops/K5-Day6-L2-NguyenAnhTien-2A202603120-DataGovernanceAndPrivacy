@@ -3,6 +3,7 @@ PY ?= .venv/bin/python
 TRACK ?= t02
 OUT ?= out
 PRED = $(shell $(PY) -c "from src.metrics.tracks import get_track;print(get_track('$(TRACK)').pred_file)")
+BASELINE_PIPELINE = $(if $(filter t02,$(TRACK)),src.baselines.t02_laplacian,src.examples.random_baseline)
 
 .PHONY: help setup preflight test fixtures verify baseline run eval-baseline eval-poc compare real-data tag-demo tag-final
 
@@ -25,8 +26,8 @@ fixtures:            ## instructor only: regenerate fixtures (needs the private 
 	@test -f tools/make_fixtures.py || { echo "tools/make_fixtures.py is instructor-only (private overlay not installed)"; exit 1; }
 	$(PY) -m tools.make_fixtures
 
-baseline:            ## random baseline wiring example (t01, t02, t11, t13)
-	$(PY) -m src.main --track $(TRACK) --pipeline src.examples.random_baseline --output $(OUT)/baseline --run-name baseline --offline --seed 42
+baseline:            ## track baseline (Laplacian for T02; random wiring example for T01/T11/T13)
+	$(PY) -m src.main --track $(TRACK) --pipeline $(BASELINE_PIPELINE) --output $(OUT)/baseline --run-name baseline --offline --seed 42
 
 run:                 ## your PoC (src/pipeline.py)
 	$(PY) -m src.main --config configs/lab.yaml --track $(TRACK) --output $(OUT)/poc --run-name poc --offline --seed 42

@@ -1,6 +1,2 @@
 member,git_author_name,git_email,role,modules_files,commit_shas,evidence_note,presenter
-Member 1,,,Lead / Integrator,src/main.py; configs/,,,
-Member 2,,,Data & fixtures,fixtures/; tools/,,,
-Member 3,,,Core algorithm,src/pipeline.py,,,
-Member 4,,,QA / metric,tests/; reports/metrics_*.json,,,
-Member 5,,,Human review + report,reports/group_report.md; demo/,,,
+Nguyễn Anh Tiến,Nguyen Anh Tien,chogaugau231@gmail.com,Individual owner,configs/lab.yaml; src/pipeline.py; src/baselines/t02_laplacian.py; tests/test_cli.py; reports/,,Implemented T02 PoC and Laplacian baseline; reviewed 20 images; report reflects one-person contribution,yes

@@ -14,11 +14,16 @@ from src.common.gt_guard import GroundTruthAccessError, disable_gt_guard, enable
 from src.common.offline import NetworkBlockedError, disable_offline_guard, enable_offline_guard
 
 
-def test_template_pipeline_fails_clearly_not_silently(tmp_path):
+def test_t02_pipeline_end_to_end(tmp_path):
     rc = runner.main(["--track", "t02", "--output", str(tmp_path), "--offline"])
-    assert rc == 3                                   # NotImplemented -> explicit exit code
+    assert rc == 0
     info = json.loads((tmp_path / "run_info.json").read_text())
-    assert info["status"] == 3 and info["seed"] == 42
+    assert info["status"] == 0 and info["seed"] == 42
+    pred = pd.read_csv(tmp_path / "ranked_review.csv")
+    assert len(pred) == 96 and list(pred.columns[:2]) == ["image_id", "score"]
+    assert pred.score.between(0, 1).all()
+    assert (tmp_path / "feature_table.csv").exists()
+    assert (tmp_path / "contact_sheet.html").exists()
 
 
 def _run_baseline(out):
@@ -34,6 +39,19 @@ def test_random_baseline_end_to_end(tmp_path):
     out2 = tmp_path / "baseline2"
     _run_baseline(out2)
     assert (out / "ranked_review.csv").read_text() == (out2 / "ranked_review.csv").read_text()
+
+
+def test_t02_laplacian_baseline_end_to_end(tmp_path):
+    out = tmp_path / "baseline"
+    rc = runner.main(["--track", "t02", "--pipeline", "src.baselines.t02_laplacian",
+                      "--output", str(out), "--offline", "--seed", "42", "--run-name", "baseline"])
+    assert rc == 0
+    pred = pd.read_csv(out / "ranked_review.csv")
+    assert len(pred) == 96 and pred.image_id.is_unique
+    assert pred.score.is_monotonic_decreasing
+    config = json.loads((out / "baseline_config.json").read_text())
+    assert config["n_dev"] > 0 and config["laplacian_variance_threshold"] >= 0
+    assert (out / "contact_sheet.html").exists()
 
 
 def test_evaluate_without_ground_truth_fails_clearly(tmp_path, capsys):

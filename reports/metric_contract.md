@@ -1,24 +1,24 @@
-# Metric contract (khai báo bắt buộc — chốt ở phút 30, trước khi chạy eval)
+# Metric contract — T02 cá nhân
 
-> Các metric chuẩn đã được cài trong `src/metrics/tracks.py`. File này là nơi nhóm **cam kết** cách dùng chúng.
-> Không đổi testset, threshold hay trọng số sau khi đã thấy kết quả eval.
+Chốt trước khi mở nhãn eval: **2026-11-14 · Nguyễn Anh Tiến**. Đây là contract của thí nghiệm cá nhân; không sửa evaluator chuẩn trong `src/metrics/tracks.py`.
 
-| Mục | Khai báo của nhóm |
+| Mục | Khai báo |
 |---|---|
-| Track | T__ |
-| Primary metric (tên đúng như evaluator in ra) | |
-| Tăng tốt hay giảm tốt? | higher / lower |
-| Đơn vị đánh giá (image / region / pair / release / batch / case …) | |
-| Công thức + numerator / denominator | |
-| Cách ghép prediction ↔ GT (IoU? id? tolerance?) | |
-| Candidate pool cố định | |
-| Review budget B / K | |
+| Track | T02 Raw QC Triage |
+| Primary metric | `Defect Recall@B` |
+| Hướng tốt | Cao hơn |
+| Đơn vị | Một `image_id` |
+| Công thức | Số ảnh có `is_defect=1` trong top-B của eval / tổng số ảnh lỗi trong eval |
+| Ghép prediction và GT | Ghép chính xác theo `image_id`; mỗi ảnh một score; score giảm dần |
+| Candidate pool | 96 ảnh fixture tổng hợp: 56 dev, 40 eval; split theo cảnh gốc |
+| Review budget | B = 20 |
 | Seed | 42 |
-| Threshold policy (chọn trên dev như thế nào) | |
-| Eval split (không dùng để tune) | |
-| Chỉ số lỗi xấu (miss / false alarm / false reject) | |
-| Slices sẽ báo cáo (≥2) | |
-| Cách báo độ bất định khi N nhỏ (Wilson CI / bootstrap) | |
-| Ngày giờ chốt + người chốt | |
+| Eval split | `eval`; không dùng nhãn để chọn threshold/feature |
+| Baseline threshold | Percentile 20 của Laplacian sharpness trên dev, không dùng nhãn |
+| PoC thresholds | Heuristic score 0.35 (loại nghi lỗi), 0.55 (gợi ý RECAPTURE); giữ cố định, không tối ưu theo eval |
+| Lỗi cần theo dõi | Missed defect ngoài top-20; false alarm trong top-20 |
+| Slices | False alarm theo `light`; recall trong top-20 theo `defect_type` |
+| Bất định | Báo Wilson 95% CI cho recall/precision khi có GT; ghi mẫu số từng slice |
+| Overlay GT | Chưa được cung cấp trong checkout học viên; chưa tính metric |
 
-Nếu baseline = 0 thì ghi rõ "baseline = 0" thay vì phần trăm cải thiện.
+Secondary metrics từ evaluator: `Precision@B`, defect-type accuracy (nếu prediction có `pred_defect_type`) và false alarm top-B theo light. Không tính phần trăm cải thiện khi chưa có cả hai kết quả baseline và PoC. Human review có thể đổi hành động `KEEP/RECAPTURE`, nhưng không thay score xếp hạng dùng để tính Recall@B.

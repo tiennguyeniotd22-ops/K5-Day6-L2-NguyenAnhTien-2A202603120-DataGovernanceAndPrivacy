@@ -1,8 +1,9 @@
-"""Wiring example = the *random* baseline required by T01 / T02 / T11 / T13.
+"""Wiring example = the *random* baseline for T01 / T11 / T13.
 
 Shows how load -> process -> rank -> review -> decide -> outputs connect.
-It is intentionally dumb (seeded random) — it is the bar your PoC must beat,
-evaluated on the same pool, same budget, same seed.
+It is intentionally dumb (seeded random). T02 uses the task-required Laplacian
+baseline in ``src.baselines.t02_laplacian``; the random T02 branch remains useful
+for testing the shared runner contract.
 
     python -m src.main --track t11 --pipeline src.examples.random_baseline --output out/baseline --run-name baseline --offline
     python -m src.evaluate --track t11 --pred out/baseline/ranking.csv --run-name baseline --out reports/metrics_baseline.json
