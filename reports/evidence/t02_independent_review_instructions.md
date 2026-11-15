@@ -8,7 +8,7 @@ Mẫu gồm 20 ảnh thuộc tập `eval`, được chọn theo seed 42 và khô
 
 1. Mở từng ảnh theo đường dẫn trong `fixtures/t02_raw_qc/`. Chỉ xem ảnh; không mở điểm số, thứ hạng, hành động gợi ý hoặc kết quả review lần đầu trong lúc gán nhãn.
 2. Điền `reviewer`, `defect_type` và `is_defect` theo định nghĩa của bài lab. Chỉ điền `severity` nếu giảng viên đã định nghĩa rõ các mức; nếu chưa, để trống.
-3. Điền `recognizability_pct`, `reviewer_action`, `confidence_1_to_5` và `review_note` như nhận xét bổ sung của bạn. Với `reviewer_action`, dùng `KEEP` hoặc `RECAPTURE`. Ghi độ tự tin từ 1 (thấp) đến 5 (cao). Áp dụng phạm vi trong [`review_guideline_t02.md`](../review_guideline_t02.md): nhận diện loại vật thể ở mức khái quát, màu chính và vị trí tương đối.
+3. Điền `recognizability_pct`, `reviewer_action`, `confidence_1_to_5` và `review_note` như nhận xét bổ sung của bạn. Dùng `KEEP` hoặc `RECAPTURE` khi đã kết luận; nếu chưa chắc, ghi `escalate` và nêu lý do thay vì đoán. Ghi độ tự tin từ 1 (thấp) đến 5 (cao). Áp dụng phạm vi trong [`review_guideline_t02.md`](../review_guideline_t02.md): nhận diện loại vật thể ở mức khái quát, màu chính và vị trí tương đối.
 4. Lưu bản đã điền thành `reports/evidence/t02_solo_blind_audit.csv`; giữ nguyên mẫu gốc và tên các cột tiếng Anh để dữ liệu tương thích với pipeline.
 5. Không điều chỉnh ngưỡng pipeline dựa trên 20 ảnh eval này. Khi báo cáo, nói rõ đây là tự kiểm tra mù do một người thực hiện.
 

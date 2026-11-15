@@ -100,6 +100,6 @@ Dữ liệu hiện tại là fixture tổng hợp. Không kết luận tuân th�
 - `.\.venv\Scripts\python.exe -m pytest -q`: exit 0, 0 failed; các test yêu cầu overlay GT được skip vì overlay chưa có.
 - Clone sạch với Python 3.11.5 và virtual environment mới cũng preflight 0 lỗi, pytest exit 0; ranking baseline/PoC khớp byte với lần chạy trước. Log đầy đủ ở [`evidence/fresh_clone/reproduction.md`](evidence/fresh_clone/reproduction.md).
 - Còn chờ để hoàn tất đánh giá chính thức: overlay GT của giảng viên; sau đó chạy evaluate/compare và bổ sung metric + failure case đã đối chiếu nhãn.
-- Còn chờ review thủ công: người thực hiện cá nhân có thể tự làm blind audit 20 ảnh eval chưa nằm trong queue đầu tiên theo [`evidence/t02_independent_review_instructions.md`](evidence/t02_independent_review_instructions.md); phải ghi là audit một người, không gọi là reviewer độc lập.
+- Còn chờ review thủ công: mẫu 20 ảnh eval và hướng dẫn solo blind audit tiếng Việt có tại [`evidence/t02_independent_review_template.csv`](evidence/t02_independent_review_template.csv), [`evidence/t02_independent_review_instructions.md`](evidence/t02_independent_review_instructions.md) và [báo cáo tự kiểm tra mù T02](t02_solo_blind_audit_report.md). Mẫu hiện còn trống; chưa có thống kê solo audit.
 - Showcase có contact sheet và dàn ý 5 slide tại [`evidence/showcase_t02.md`](evidence/showcase_t02.md); cần người học trình bày trực tiếp hoặc chuyển dàn ý thành slide.
 - Mã cá nhân trong report là mã cục bộ. Nếu lớp yêu cầu mã nhóm chính thức hoặc tag mốc, thay/cấp từ giảng viên; không tự suy đoán.
